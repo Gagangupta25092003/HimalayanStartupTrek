@@ -145,14 +145,14 @@ class Body extends StatelessWidget {
                   fit: BoxFit.cover
                   )
                 ),
-                Positioned(child: 
+                Positioned(child:
                   Column(
                     children: [
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
                         child: const Text(
-                          'Accommodation Manager',
+                          'GM',
                           style: TextStyle(
                             inherit: false,
                             color: Colors.white,
@@ -166,7 +166,7 @@ class Body extends StatelessWidget {
                         width: double.infinity,
                         padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
                         child: const Text(
-                          'Khushal Sharma',
+                          'Anil Singh',
                           style: TextStyle(
                             inherit: false,
                             color: Colors.white,
@@ -181,7 +181,7 @@ class Body extends StatelessWidget {
                         width: double.infinity,
                         padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
                         child: const Text(
-                          '+91 9683637487, +91 8756485763',
+                          '+91 9599836232, +91 9958810873',
                           style: TextStyle(
                             inherit: false,
                             color: Colors.white,
@@ -236,7 +236,7 @@ class Body extends StatelessWidget {
                         width: double.infinity,
                         padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
                         child: const Text(
-                          'Accommodation Manager',
+                          'Accommodation',
                           style: TextStyle(
                             inherit: false,
                             color: Colors.white,
@@ -250,7 +250,7 @@ class Body extends StatelessWidget {
                         width: double.infinity,
                         padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
                         child: const Text(
-                          'Khushal Sharma',
+                          'Kushal Deep Jagota',
                           style: TextStyle(
                             inherit: false,
                             color: Colors.white,
@@ -265,7 +265,7 @@ class Body extends StatelessWidget {
                         width: double.infinity,
                         padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
                         child: const Text(
-                          '+91 9683637487, +91 8756485763',
+                          '+91 8894914220',
                           style: TextStyle(
                             inherit: false,
                             color: Colors.white,
@@ -285,47 +285,47 @@ class Body extends StatelessWidget {
             height: 20,
           ),
           Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                stops: [0.1, 0.9],
-                colors: [
-                 Color(0xFFF0B31A),
-                 Color(0xFFFFD541)              
-              ]),
-              borderRadius: BorderRadius.all(Radius.circular(30))
-            ),
-            child: Stack(
-              children: [
-                Positioned(
-                  width: widthsize,
-                  bottom: 0,
-                  child: Image.asset(
-                  'assets/images/home_Vector.png',
-                  fit: BoxFit.cover
-                  )
-                ),
-                Positioned(
-                  width: widthsize,
-                  bottom: 0,
-                  child: Image.asset(
-                  'assets/images/home_Vector2.png',
-                  fit: BoxFit.cover
-                  )
-                ),
-                Positioned(child: 
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFFF0B31A),
+                        Color(0xFFFFD541)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
                   Column(
                     children: [
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
                         child: const Text(
-                          'Accommodation Manager',
+                          'Hospitality',
                           style: TextStyle(
-                            inherit: false,
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold
-                            ),
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
                           textAlign: TextAlign.start,
                         ),
                       ),
@@ -333,36 +333,881 @@ class Body extends StatelessWidget {
                         width: double.infinity,
                         padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
                         child: const Text(
-                          'Khushal Sharma',
+                          'Pallavi Supahiya',
                           style: TextStyle(
                             inherit: false,
                             color: Colors.white,
                             fontSize: 16,
-                            ),
+                          ),
                           textAlign: TextAlign.start,
-                        
-                        
+
+
                         ),
                       ),
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
                         child: const Text(
-                          '+91 9683637487, +91 8756485763',
+                          '+91 9646262397, +91 7807921395',
                           style: TextStyle(
                             inherit: false,
                             color: Colors.white,
                             fontSize: 16,
-                            ),
+                          ),
                           textAlign: TextAlign.start,
-                        
-                        
+
+
                         ),
                       ),
-              
-            ],))
-              ],
-            )
+
+                    ],))
+                ],
+              )
+          ),
+          Container(
+            height: 20,
+          ),
+
+          Container(
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFF441DFC),
+                        Color(0xFF4E81EB)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                        child: const Text(
+                          'Registrations',
+                          style: TextStyle(
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                        child: const Text(
+                          'Sushmita Singh',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
+                        child: const Text(
+                          '+91 6207929951',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+
+                    ],))
+                ],
+              )
+
+          ),
+          Container(
+            height: 20,
+          ),
+          Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFF967684),
+                        Color(0xFFF6815B)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                        child: const Text(
+                          'Grand Challenge',
+                          style: TextStyle(
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                        child: const Text(
+                          'Megha Bhardwaj',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
+                        child: const Text(
+                          '+91 7807090713',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+
+                    ],))
+                ],
+              )
+          ),
+          Container(
+            height: 20,
+          ),
+          Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFFF0B31A),
+                        Color(0xFFFFD541)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                        child: const Text(
+                          'Investor Den',
+                          style: TextStyle(
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                        child: const Text(
+                          'Salik Sarwar',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
+                        child: const Text(
+                          '+91 8444844193',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+
+                    ],))
+                ],
+              )
+          ),
+          Container(
+            height: 20,
+          ),
+
+          Container(
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFF441DFC),
+                        Color(0xFF4E81EB)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                        child: const Text(
+                          'Travel',
+                          style: TextStyle(
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                        child: const Text(
+                          'Harish Kanaujia',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
+                        child: const Text(
+                          '+91 9816119824',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+
+                    ],))
+                ],
+              )
+
+          ),
+          Container(
+            height: 20,
+          ),
+          Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFF967684),
+                        Color(0xFFF6815B)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                        child: const Text(
+                          'Holiday Planning',
+                          style: TextStyle(
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                        child: const Text(
+                          'Minni Kaur',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
+                        child: const Text(
+                          '+91 7876137782',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+
+                    ],))
+                ],
+              )
+          ),
+          Container(
+            height: 20,
+          ),
+          Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFFF0B31A),
+                        Color(0xFFFFD541)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                        child: const Text(
+                          'Speed Dating',
+                          style: TextStyle(
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                        child: const Text(
+                          'Vishal Sharma',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
+                        child: const Text(
+                          '+91 9459423251',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+
+                    ],))
+                ],
+              )
+          ),
+          Container(
+            height: 20,
+          ),
+
+          Container(
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFF441DFC),
+                        Color(0xFF4E81EB)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                        child: const Text(
+                          'Esummit Events',
+                          style: TextStyle(
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                        child: const Text(
+                          'Ravinder Kumar',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
+                        child: const Text(
+                          '+91 7347386959',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+
+                    ],))
+                ],
+              )
+
+          ),
+          Container(
+            height: 20,
+          ),
+          Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFF967684),
+                        Color(0xFFF6815B)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                        child: const Text(
+                          'Scheduling',
+                          style: TextStyle(
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                        child: const Text(
+                          'Meenaxi Thakur',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
+                        child: const Text(
+                          '+91 8628911840',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+
+                    ],))
+                ],
+              )
+          ),
+          Container(
+            height: 20,
+          ),
+          Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFFF0B31A),
+                        Color(0xFFFFD541)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                        child: const Text(
+                          'Flea Market',
+                          style: TextStyle(
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                        child: const Text(
+                          'Abhishek Mukamia',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
+                        child: const Text(
+                          '+91 9805427139',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+
+                    ],))
+                ],
+              )
+          ),
+          Container(
+            height: 20,
+          ),
+
+          Container(
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      stops: [0.1, 0.9],
+                      colors: [
+                        Color(0xFF441DFC),
+                        Color(0xFF4E81EB)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(
+                      width: widthsize,
+                      bottom: 0,
+                      child: Image.asset(
+                          'assets/images/home_Vector2.png',
+                          fit: BoxFit.cover
+                      )
+                  ),
+                  Positioned(child:
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                        child: const Text(
+                          'Guest house',
+                          style: TextStyle(
+                              inherit: false,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                        child: const Text(
+                          'Vishal Sharma',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 15),
+                        child: const Text(
+                          '+91 9459423251',
+                          style: TextStyle(
+                            inherit: false,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.start,
+
+
+                        ),
+                      ),
+
+                    ],))
+                ],
+              )
+
+          ),
+          Container(
+            height: 20,
           ),
         ],
       ),
