@@ -17,7 +17,7 @@ class MyAppRouter{
 GoRouter router =  GoRouter(
   routes: [
     GoRoute(
-      path: '/',
+      path: '/home',
       name: 'home',
       pageBuilder: (context,state) {
         return MaterialPage(child: Home());
@@ -81,7 +81,7 @@ GoRouter router =  GoRouter(
       }
     ),
     GoRoute(
-      path: '/sponsors',
+      path: '/',
       name: 'Sponsors',
       pageBuilder: (context,state) {
         return MaterialPage(child: Sponsors());
