@@ -10,7 +10,7 @@ class SponsorTile extends StatelessWidget {
     final widthsize = (MediaQuery.of(context).size.width);
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.only(left: 30.0, top: 10.0, right: 30.0, bottom: 30.0),
+      margin: EdgeInsets.only(left: 30.0, top: 10.0, right: 30.0, bottom: 20.0),
       padding: EdgeInsets.all(20),
       decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [

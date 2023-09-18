@@ -346,6 +346,77 @@ class Body extends StatelessWidget {
                         )),
                   ],
                 ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 10, 0, 00),
+                child: Row(
+                  children: [
+                    Expanded(
+                        flex: 1,
+                        child: GestureDetector(
+                          child: Container(
+                          margin: EdgeInsets.fromLTRB(0, 0, 7.5, 0),
+                          decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
+                              ),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Column(children: [
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              height: 75,
+                              child:
+                                  Image.asset('assets/images/sponsors.png'),
+                            ),
+                            Container(
+                                margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                                child: const Text(
+                                  'Investors',
+                                  style: TextStyle(
+                                    inherit: false,
+                                    fontSize: 16,
+                                  ),
+                                ))
+                          ]),
+                        ),
+                        onTap: () {
+                          GoRouter.of(context).pushNamed('Investors');
+                        },
+                        )),
+                    Expanded(
+                        flex: 1,
+                        child: GestureDetector(
+                          child: Container(
+                          margin: EdgeInsets.fromLTRB(7.5, 0, 0, 0),
+                          decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
+                              ),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Column(children: [
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              height: 75,
+                              child:
+                                  Image.asset('assets/images/about.png'),
+                            ),
+                            Container(
+                                margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                                child: const Text(
+                                  'Mentors',
+                                  style: TextStyle(
+                                    inherit: false,
+                                    fontSize: 16,
+                                  ),
+                                ))
+                          ]),
+                        ),
+                        onTap: () {
+                          GoRouter.of(context).pushNamed('Mentors');
+                        },
+                        )),
+                  ],
+                ),
               )
             ],
           ),

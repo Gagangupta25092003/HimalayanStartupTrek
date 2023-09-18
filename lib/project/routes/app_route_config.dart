@@ -7,6 +7,8 @@ import 'package:hst/pages/event_schedule.dart';
 import 'package:hst/pages/home.dart';
 import 'package:hst/pages/error.dart';
 import 'package:hst/pages/investors.dart';
+import 'package:hst/pages/investors_list.dart';
+import 'package:hst/pages/mentors.dart';
 import 'package:hst/pages/notification.dart';
 import 'package:hst/pages/splash.dart';
 import 'package:hst/pages/sponsors.dart';
@@ -20,7 +22,7 @@ class MyAppRouter{
 GoRouter router =  GoRouter(
   routes: [
     GoRoute(
-      path: '/home',
+      path: '/',
       name: 'home',
       pageBuilder: (context,state) {
         return MaterialPage(child: Home());
@@ -84,10 +86,24 @@ GoRouter router =  GoRouter(
       }
     ),
     GoRoute(
-      path: '/',
+      path: '/sponsors',
       name: 'Sponsors',
       pageBuilder: (context,state) {
         return MaterialPage(child: Sponsors());
+      }
+    ),
+    GoRoute(
+      path: '/investors',
+      name: 'Investors',
+      pageBuilder: (context,state) {
+        return MaterialPage(child: Investors_detail());
+      }
+    ),
+    GoRoute(
+      path: '/mentors',
+      name: 'Mentors',
+      pageBuilder: (context,state) {
+        return MaterialPage(child: Mentors());
       }
     )
   ],

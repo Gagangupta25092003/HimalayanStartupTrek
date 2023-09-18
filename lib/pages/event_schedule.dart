@@ -74,199 +74,253 @@ class _EventScheduleState extends State<EventSchedule> {
             ],
           ),
         ),
-      body: Container(
-      color: const Color(0xFFF8FFFD),
-      child: Column(
-        children: [
-          Container(
-              color: Colors.white,
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-              height: widthsize / 2.15,
-              width: widthsize + 60,
-              child: Center(
-                child: Stack(
-                  children: [
-                    Positioned(
-                        height: widthsize,
-                        bottom: 0,
-                        child: Container(
-                          width: widthsize,
-                          decoration: const BoxDecoration(
-                            gradient: RadialGradient(
-                              // near the top right
-                                radius: 0.6,
-                                colors: [
-                                  Color(0xFF4EEB83),
-                                  Color(0xFF219E78),
-                                ]),
-                            shape: BoxShape.circle,
-                          ),
-                        )),
-                    Positioned(
-                        height: widthsize / 2.25,
-                        width: widthsize,
-                        child: Image.asset(
-                          'assets/images/circle_Vector.png',
-                          fit: BoxFit.cover,
-                        )),
-                    Positioned(
-                        height: widthsize / 2.25,
-                        width: widthsize,
-                        child: Image.asset(
-                          'assets/images/home_Vector2.png',
-                          fit: BoxFit.cover,
-                        )),
-                    Positioned(
-                        top: widthsize / 10,
-                        width: widthsize,
-                        child: const Center(
-                          child: Text(
-                            'Event Schedule',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                inherit: false,
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ))
+      body: DefaultTabController(
+        length: 4,
+        child: Container(
+          color: const Color(0xFFF8FFFD),
+          child: Column(
+            children: [
+              Container(
+                  color: Colors.white,
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  height: widthsize / 2.15,
+                  width: widthsize + 60,
+                  child: Center(
+                    child: Stack(
+                      children: [
+                        Positioned(
+                            height: widthsize,
+                            bottom: 0,
+                            child: Container(
+                              width: widthsize,
+                              decoration: const BoxDecoration(
+                                gradient: RadialGradient(
+                                  // near the top right
+                                    radius: 0.6,
+                                    colors: [
+                                      Color(0xFF4EEB83),
+                                      Color(0xFF219E78),
+                                    ]),
+                                shape: BoxShape.circle,
+                              ),
+                            )),
+                        Positioned(
+                            height: widthsize / 2.25,
+                            width: widthsize,
+                            child: Image.asset(
+                              'assets/images/circle_Vector.png',
+                              fit: BoxFit.cover,
+                            )),
+                        Positioned(
+                            height: widthsize / 2.25,
+                            width: widthsize,
+                            child: Image.asset(
+                              'assets/images/home_Vector2.png',
+                              fit: BoxFit.cover,
+                            )),
+                        Positioned(
+                            top: widthsize / 10,
+                            width: widthsize,
+                            child: const Center(
+                              child: Text(
+                                'Event Schedule',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    inherit: false,
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ))
+                      ],
+                    ),
+                  )),
+              Container(
+                color: Colors.white,
+                width: double.infinity,
+                height: 60,
+                padding: const EdgeInsets.fromLTRB(30, 10, 10, 20),
+                child: const Text(
+                  'October 2023',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      inherit: false,
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                child: TabBar(
+                  indicator: BoxDecoration(
+                      color: Colors.green[300],
+                      borderRadius:  BorderRadius.circular(20.0)
+                  ) ,
+                  tabs: [
+                    Tab(child: Text('28th Sept',
+                      style: TextStyle(
+                          color: Colors.black,
+                        fontSize: 13
+                      ),
+                    )),
+                    Tab(child: Text('29th Sept',
+                      style: TextStyle(
+                        color: Colors.black,
+
+                          fontSize: 13
+                      ),
+                    )),
+                    Tab(child: Text('30th Sept',
+                      style: TextStyle(
+                          color: Colors.black,
+
+                          fontSize: 13
+                      ),
+                    )),
+                    Tab(child: Text('1st Oct',
+                      style: TextStyle(
+                          color: Colors.black,
+
+                          fontSize: 13
+                      ),
+                    ))
                   ],
                 ),
-              )),
-          Container(
-            color: Colors.white,
-            width: double.infinity,
-            height: 60,
-            padding: const EdgeInsets.fromLTRB(30, 10, 10, 20),
-            child: const Text(
-              'October 2023',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  inherit: false,
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold),
-            ),
+              ),
+              Expanded(child: TabBarView(
+                children: [
+                  Container(
+                    height: heightsize-widthsize / 2.15 - 100 - 60,
+                    padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
+                    child: FutureBuilder(
+                      future: getFeedbackFromSheet(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.data != null) {
+                          return ListView.builder(
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                if(snapshot.data[index].date == '28-09-2023'){
+                                  return eventScheduleTile(
+                                      snapshot.data[index].name,
+                                      snapshot.data[index].date,
+                                      snapshot.data[index].time,
+                                      snapshot.data[index].venue);
+                                }
+                                else{
+                                  return Container();
+                                }
+                              }
+                              );
+                        } else {
+                          return Container(
+                            child: Center(
+                              child: Text('Loading.....'),
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                  Container(
+                    height: heightsize-widthsize / 2.15 - 100 - 60,
+                    padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
+                    child: FutureBuilder(
+                      future: getFeedbackFromSheet(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.data != null) {
+                          return ListView.builder(
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+
+                                if(snapshot.data[index].date == '29-09-2023'){
+                                  return eventScheduleTile(
+                                      snapshot.data[index].name,
+                                      snapshot.data[index].date,
+                                      snapshot.data[index].time,
+                                      snapshot.data[index].venue);
+                                }
+                                else{
+                                  return Container();
+                                }
+                              });
+                        } else {
+                          return Container(
+                            child: Center(
+                              child: Text('Loading.....'),
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                  Container(
+                    height: heightsize-widthsize / 2.15 - 100 - 60,
+                    padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
+                    child: FutureBuilder(
+                      future: getFeedbackFromSheet(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.data != null) {
+                          return ListView.builder(
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                if(snapshot.data[index].date == '30-09-2023'){
+                                  return eventScheduleTile(
+                                      snapshot.data[index].name,
+                                      snapshot.data[index].date,
+                                      snapshot.data[index].time,
+                                      snapshot.data[index].venue);
+                                }
+                                else{
+                                  return Container();
+                                }
+                              });
+                        } else {
+                          return Container(
+                            child: Center(
+                              child: Text('Loading.....'),
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                  Container(
+                    height: heightsize-widthsize / 2.15 - 100 - 60,
+                    padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
+                    child: FutureBuilder(
+                      future: getFeedbackFromSheet(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.data != null) {
+                          return ListView.builder(
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                if(snapshot.data[index].date == '01 - 10 - 2023'){
+                                  return eventScheduleTile(
+                                      snapshot.data[index].name,
+                                      snapshot.data[index].date,
+                                      snapshot.data[index].time,
+                                      snapshot.data[index].venue);
+                                }
+                                else{
+                                  return Container();
+                                }
+                              });
+                        } else {
+                          return Container(
+                            child: Center(
+                              child: Text('Loading.....'),
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ))
+
+            ],
           ),
-          Container(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-            color: Colors.white,
-            height: 100,
-            child: Row(children: [
-              SizedBox(
-                width: widthsize / 4,
-                child: const Column(children: [
-                  Text(
-                    '12',
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Text(
-                    'Tue',
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ]),
-              ),
-              SizedBox(
-                width: widthsize / 4,
-                child: const Column(children: [
-                  Text(
-                    '13',
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Text(
-                    'Wed',
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ]),
-              ),
-              SizedBox(
-                width: widthsize / 4,
-                child: const Column(children: [
-                  Text(
-                    '14',
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Text(
-                    'Thu',
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ]),
-              ),
-              SizedBox(
-                width: widthsize / 4,
-                child: const Column(children: [
-                  Text(
-                    '15',
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Text(
-                    'Fri',
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ]),
-              )
-            ]),
-          ),
-          Container(
-              height: heightsize-widthsize / 2.15 - 100 - 60,
-              padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
-              child: FutureBuilder(
-                future: getFeedbackFromSheet(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.data != null) {
-                    return ListView.builder(
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (context, index) {
-                          return eventScheduleTile(
-                              snapshot.data[index].name,
-                              snapshot.data[index].date,
-                              snapshot.data[index].time,
-                              snapshot.data[index].venue);
-                        });
-                  } else {
-                    return Container(
-                      child: Center(
-                        child: Text('Loading.....'),
-                      ),
-                    );
-                  }
-                },
-              ),
-          ),
-        ],
-      ),
-    ),
+        ),
+      )
     );
   }
 }
