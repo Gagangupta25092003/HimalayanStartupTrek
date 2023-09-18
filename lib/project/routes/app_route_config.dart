@@ -7,9 +7,12 @@ import 'package:hst/pages/event_schedule.dart';
 import 'package:hst/pages/home.dart';
 import 'package:hst/pages/error.dart';
 import 'package:hst/pages/investors.dart';
+import 'package:hst/pages/notification.dart';
 import 'package:hst/pages/splash.dart';
 import 'package:hst/pages/sponsors.dart';
 import 'package:hst/pages/sponsorsdetail.dart';
+
+import 'package:hst/pages/notification.dart';
 
 class MyAppRouter{
 
@@ -62,7 +65,7 @@ GoRouter router =  GoRouter(
       path: '/error',
       name: 'error',
       pageBuilder: (context,state) {
-        return MaterialPage(child: Error());
+        return MaterialPage(child: NotificationEvent());
       }
     ),
     GoRoute(

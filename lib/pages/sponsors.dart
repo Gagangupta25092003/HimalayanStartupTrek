@@ -11,17 +11,14 @@ class Sponsors extends StatefulWidget {
 }
 
 class _SponsorsState extends State<Sponsors> {
-  String n = 'dw';
 
   Future<List<Sponsor_model>> getFeedbackFromSheet() async {
     List<Sponsor_model> feedbacks = <Sponsor_model>[];
-    n = 'sad';
     var raw = await http.get(Uri.parse(
         "https://script.google.com/macros/s/AKfycbxFMKi7MAg7lT1b1-ySZrnWgBTUZtl26z3HHE3EPMcbQYhzZ3OpRaQe9MUZdpjJ9I3V/exec"));
 
     var jsonFeedback = convert.jsonDecode(raw.body);
     print('this is json Feedback $jsonFeedback');
-    n = jsonFeedback.toString();
     // feedbacks = jsonFeedback.map((json) => FeedbackModel.fromJson(json));
 
     jsonFeedback.forEach((element) {

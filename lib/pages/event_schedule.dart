@@ -1,11 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hst/eventschedulemodel.dart';
+import 'package:http/http.dart' as http;
+import 'package:hst/Sponsors_model.dart';
+import 'dart:convert' as convert;
 
-class EventSchedule extends StatelessWidget {
-  const EventSchedule({super.key});
+class EventSchedule extends StatefulWidget {
+  @override
+  _EventScheduleState createState() => _EventScheduleState();
+}
+
+class _EventScheduleState extends State<EventSchedule> {
+
+  Future<List<eventScheduleModel>> getFeedbackFromSheet() async {
+    List<eventScheduleModel> feedbacks = <eventScheduleModel>[];
+    var raw = await http.get(Uri.parse(
+        "https://script.google.com/macros/s/AKfycbwfQAcw71sYcA0bVCOvF8hfSaJV0ar0QefQMGYkgFBTgmJ9aeB8KyXU3BvK3ZB6QZ5-/exec"));
+
+    var jsonFeedback = convert.jsonDecode(raw.body);
+    print('this is json Feedback $jsonFeedback');
+    // feedbacks = jsonFeedback.map((json) => FeedbackModel.fromJson(json));
+
+    jsonFeedback.forEach((element) {
+      print('$element THIS IS NEXT>>>>>>>');
+      eventScheduleModel feedbackModel = new eventScheduleModel();
+      feedbackModel.name = element['name'];
+      feedbackModel.date = element['date'];
+      feedbackModel.time = element['time'];
+      feedbackModel.venue = element['venue'];
+      feedbacks.add(feedbackModel);
+    });
+    return feedbacks;
+  }
 
   @override
   Widget build(BuildContext context) {
+
+    final widthsize = (MediaQuery.of(context).size.width - 40);
+    final heightsize = (MediaQuery.of(context).size.height - 40);
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
         height: 40,
@@ -42,19 +74,7 @@ class EventSchedule extends StatelessWidget {
             ],
           ),
         ),
-      body: Body(),
-    );
-  }
-}
-
-class Body extends StatelessWidget {
-  const Body({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final widthsize = (MediaQuery.of(context).size.width - 40);
-    final heightsize = (MediaQuery.of(context).size.height - 40);
-    return Container(
+      body: Container(
       color: const Color(0xFFF8FFFD),
       child: Column(
         children: [
@@ -221,315 +241,118 @@ class Body extends StatelessWidget {
           Container(
               height: heightsize-widthsize / 2.15 - 100 - 60,
               padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
-              child: ListView(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    color: Colors.white,
-                    width: double.infinity,
-                    child: Row(children: [
-                      Container(
-                        width: 60,
-                        padding: EdgeInsets.all(15),
-                        decoration: const BoxDecoration(
-                          gradient: RadialGradient(
-                            // near the top right
-                              radius: 0.6,
-                              colors: [
-                                Color(0xFF4EEB83),
-                                Color(0xFF219E78),
-                              ]),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.asset('assets/images/stadium.png',
-                            fit: BoxFit.cover),
+              child: FutureBuilder(
+                future: getFeedbackFromSheet(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.data != null) {
+                    return ListView.builder(
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, index) {
+                          return eventScheduleTile(
+                              snapshot.data[index].name,
+                              snapshot.data[index].date,
+                              snapshot.data[index].time,
+                              snapshot.data[index].venue);
+                        });
+                  } else {
+                    return Container(
+                      child: Center(
+                        child: Text('Loading.....'),
                       ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Startup Exhibition',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Container(
-                                height: 5,
-                              ),
-                              const Text(
-                                '9:30 am, Auditorium',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              const Text(
-                                'North Campus',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                            ]),
-                      )
-                    ]),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    color: Colors.white,
-                    width: double.infinity,
-                    child: Row(children: [
-                      Container(
-                        width: 60,
-                        padding: EdgeInsets.all(15),
-                        decoration: const BoxDecoration(
-                          gradient: RadialGradient(
-                            // near the top right
-                              radius: 0.6,
-                              colors: [
-                                Color(0xFF4EEB83),
-                                Color(0xFF219E78),
-                              ]),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.asset('assets/images/stadium.png',
-                            fit: BoxFit.cover),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Startup Exhibition',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Container(
-                                height: 5,
-                              ),
-                              const Text(
-                                '9:30 am, Auditorium',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              const Text(
-                                'North Campus',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                            ]),
-                      )
-                    ]),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    color: Colors.white,
-                    width: double.infinity,
-                    child: Row(children: [
-                      Container(
-                        width: 60,
-                        padding: EdgeInsets.all(15),
-                        decoration: const BoxDecoration(
-                          gradient: RadialGradient(
-                            // near the top right
-                              radius: 0.6,
-                              colors: [
-                                Color(0xFF4EEB83),
-                                Color(0xFF219E78),
-                              ]),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.asset('assets/images/stadium.png',
-                            fit: BoxFit.cover),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Startup Exhibition',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Container(
-                                height: 5,
-                              ),
-                              const Text(
-                                '9:30 am, Auditorium',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              const Text(
-                                'North Campus',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                            ]),
-                      )
-                    ]),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    color: Colors.white,
-                    width: double.infinity,
-                    child: Row(children: [
-                      Container(
-                        width: 60,
-                        padding: EdgeInsets.all(15),
-                        decoration: const BoxDecoration(
-                          gradient: RadialGradient(
-                            // near the top right
-                              radius: 0.6,
-                              colors: [
-                                Color(0xFF4EEB83),
-                                Color(0xFF219E78),
-                              ]),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.asset('assets/images/stadium.png',
-                            fit: BoxFit.cover),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Startup Exhibition',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Container(
-                                height: 5,
-                              ),
-                              const Text(
-                                '9:30 am, Auditorium',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              const Text(
-                                'North Campus',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                            ]),
-                      )
-                    ]),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    color: Colors.white,
-                    width: double.infinity,
-                    child: Row(children: [
-                      Container(
-                        width: 60,
-                        padding: EdgeInsets.all(15),
-                        decoration: const BoxDecoration(
-                          gradient: RadialGradient(
-                            // near the top right
-                              radius: 0.6,
-                              colors: [
-                                Color(0xFF4EEB83),
-                                Color(0xFF219E78),
-                              ]),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.asset('assets/images/stadium.png',
-                            fit: BoxFit.cover),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Startup Exhibition',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Container(
-                                height: 5,
-                              ),
-                              const Text(
-                                '9:30 am, Auditorium',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              const Text(
-                                'North Campus',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    inherit: false,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                            ]),
-                      )
-                    ]),
-                  )
+                    );
+                  }
+                },
+              ),
+          ),
+        ],
+      ),
+    ),
+    );
+  }
+}
 
-                ],
-              )),
+class eventScheduleTile extends StatelessWidget {
+  final String? name, date, time, venue;
+  eventScheduleTile(this.name,  this.date, this.time, this.venue);
+
+  @override
+  Widget build(BuildContext context) {
+
+    final widthsize = (MediaQuery.of(context).size.width);
+    return Container(
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            color: Colors.white,
+            width: double.infinity,
+            child: Row(children: [
+              Container(
+                width: 60,
+                padding: EdgeInsets.all(15),
+                decoration: const BoxDecoration(
+                  gradient: RadialGradient(
+                    // near the top right
+                      radius: 0.6,
+                      colors: [
+                        Color(0xFF4EEB83),
+                        Color(0xFF219E78),
+                      ]),
+                  shape: BoxShape.circle,
+                ),
+                child: Image.asset('assets/images/stadium.png',
+                    fit: BoxFit.cover),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                width: widthsize-160,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name??'',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            inherit: false,
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Container(
+                        height: 5,
+                      ),
+                      Text(
+                        'Date: $date',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            inherit: false,
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300),
+                      ),
+                      Text(
+                        'Time: $time',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            inherit: false,
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300),
+                      ),
+                      Text(
+                        'Venue: ${venue}',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            inherit: false,
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300),
+                      ),
+                    ]),
+              )
+            ]),
+          ),
+          SizedBox(height: 20,)
         ],
       ),
     );
