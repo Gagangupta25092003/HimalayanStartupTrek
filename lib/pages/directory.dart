@@ -74,8 +74,10 @@ class _DirectoryState extends State<Directory> {
           ],
         ),
       ),
-      body: Container(
-        color: const Color(0xFFE4F3ED),
+      body: DefaultTabController(
+        length: 3,
+        child: Container(
+        color: Color.fromARGB(255, 237, 248, 243),
         child: Column(
           children: [
             Container(
@@ -133,75 +135,45 @@ class _DirectoryState extends State<Directory> {
                   ),
                 )),
             Container(
-              padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
               color: Colors.white,
-              height: 100,
-              child: const Row(children: [
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    'AI Robot',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 14,
-                    ),
-                  ),
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                child: TabBar(
+                  indicator: BoxDecoration(
+                      color: Colors.green[300],
+                      borderRadius:  BorderRadius.circular(20.0)
+                  ) ,
+                  tabs: [
+                    Tab(child: Text('HCI',
+                      style: TextStyle(
+                          color: Colors.black,
+                        fontSize: 13
+                      ),
+
+                      textAlign: TextAlign.center,
+                    )),
+                    Tab(child: Text('BUILD for Himalayas',
+                      style: TextStyle(
+                        color: Colors.black,
+
+                          fontSize: 13
+                      ),
+
+                      textAlign: TextAlign.center,
+                    )),
+                    Tab(child: Text('Environment and Sustanibility',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 13,
+                          
+                      ),
+                      textAlign: TextAlign.center,
+                    )),
+                    
+                  ],
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    'Agri Tech',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    'Eco Friendly',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    'EV',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 14,
-                    ),
-                  ),
-                )
-              ]),
-            ),
-            Container(
-              width: double.infinity,
-              height: 20,
-              padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
-              child: const Text(
-                'All Startups',
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    inherit: false,
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
               ),
-            ),
-            Container(
+              Expanded(child: TabBarView(children: [
+                Container(
                 padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
                 height: heightsize - widthsize / 2.15 - 100 - 20,
                 child: FutureBuilder(
@@ -230,9 +202,68 @@ class _DirectoryState extends State<Directory> {
                   }
                 },
               ),),
+              Container(
+                padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
+                height: heightsize - widthsize / 2.15 - 100 - 20,
+                child: FutureBuilder(
+                future: getFeedbackFromSheet(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.data != null) {
+                    return ListView.builder(
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, index) {
+                          return DirectoryTile(
+                              snapshot.data[index].name,
+                              snapshot.data[index].founder,
+                              snapshot.data[index].onephrase,
+                              snapshot.data[index].onelinebrief,
+                              snapshot.data[index].breifidea,
+                              snapshot.data[index].sector,
+                              snapshot.data[index].tag,
+                              );
+                        });
+                  } else {
+                    return Container(
+                      child: Center(
+                        child: Text('Loading.....'),
+                      ),
+                    );
+                  }
+                },
+              ),),
+              Container(
+                padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
+                height: heightsize - widthsize / 2.15 - 100 - 20,
+                child: FutureBuilder(
+                future: getFeedbackFromSheet(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.data != null) {
+                    return ListView.builder(
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, index) {
+                          return DirectoryTile(
+                              snapshot.data[index].name,
+                              snapshot.data[index].founder,
+                              snapshot.data[index].onephrase,
+                              snapshot.data[index].onelinebrief,
+                              snapshot.data[index].breifidea,
+                              snapshot.data[index].sector,
+                              snapshot.data[index].tag,
+                              );
+                        });
+                  } else {
+                    return Container(
+                      child: Center(
+                        child: Text('Loading.....'),
+                      ),
+                    );
+                  }
+                },
+              ),),
+              ],))            
           ],
         ),
-      ),
+      ),)
     );
   }
 }

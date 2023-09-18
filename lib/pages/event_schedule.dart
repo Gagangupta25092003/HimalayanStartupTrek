@@ -77,7 +77,7 @@ class _EventScheduleState extends State<EventSchedule> {
       body: DefaultTabController(
         length: 4,
         child: Container(
-          color: const Color(0xFFF8FFFD),
+          color: Color.fromARGB(255, 242, 253, 250),
           child: Column(
             children: [
               Container(
@@ -134,22 +134,10 @@ class _EventScheduleState extends State<EventSchedule> {
                       ],
                     ),
                   )),
+              
               Container(
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                 color: Colors.white,
-                width: double.infinity,
-                height: 60,
-                padding: const EdgeInsets.fromLTRB(30, 10, 10, 20),
-                child: const Text(
-                  'October 2023',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      inherit: false,
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
                 child: TabBar(
                   indicator: BoxDecoration(
                       color: Colors.green[300],
@@ -221,7 +209,7 @@ class _EventScheduleState extends State<EventSchedule> {
                     ),
                   ),
                   Container(
-                    height: heightsize-widthsize / 2.15 - 100 - 60,
+                    height: heightsize-widthsize / 2.15 - 100,
                     padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
                     child: FutureBuilder(
                       future: getFeedbackFromSheet(),

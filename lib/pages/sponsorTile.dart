@@ -27,7 +27,7 @@ class SponsorTile extends StatelessWidget {
           ),
           Container(
             width: widthsize-180,
-            padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
