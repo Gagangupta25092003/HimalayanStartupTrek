@@ -1,6 +1,5 @@
-# hst
-
-A new Flutter project.
+# Himalayan Startup Trek
+This is a flutter project which I made around September,2023 for a Startup Fest names Himalayan Startyp Trek which was organized by Indian Instiute of Technology Catalyst, MANDI with collaboration with E-cell of IITMANDI.
 
 ## Getting Started
 
