@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hst/pages/sponsorTile.dart';
+import 'package:hst/tile/sponsorTile.dart';
 import 'package:http/http.dart' as http;
-import 'package:hst/Sponsors_model.dart';
+import 'package:hst/models/Sponsors_model.dart';
 import 'dart:convert' as convert;
 
 class Sponsors extends StatefulWidget {
@@ -14,7 +14,7 @@ class _SponsorsState extends State<Sponsors> {
   Future<List<Sponsor_model>> getFeedbackFromSheet() async {
     List<Sponsor_model> feedbacks = <Sponsor_model>[];
     var raw = await http.get(Uri.parse(
-        "https://script.google.com/macros/s/AKfycbxFMKi7MAg7lT1b1-ySZrnWgBTUZtl26z3HHE3EPMcbQYhzZ3OpRaQe9MUZdpjJ9I3V/exec"));
+        "https://script.google.com/macros/s/AKfycbyEJAyfIJJ-L1tvfJFvuvJo_fbPjy3jIz4lZGz0veXJ-D-8EL70cPJLVpg23XEJlVbq/exec"));
 
     var jsonFeedback = convert.jsonDecode(raw.body);
     print('this is json Feedback $jsonFeedback');
@@ -24,9 +24,8 @@ class _SponsorsState extends State<Sponsors> {
       print('$element THIS IS NEXT>>>>>>>');
       Sponsor_model feedbackModel = new Sponsor_model();
       feedbackModel.name = element['name'];
-      feedbackModel.linkedin = element['linkedin'];
-      feedbackModel.designation = element['designation'];
-      feedbackModel.organization = element['organization'];
+      feedbackModel.imageurl = element['imageurl'];
+      feedbackModel.category = element['category'];
       feedbacks.add(feedbackModel);
     });
     return feedbacks;
@@ -124,39 +123,8 @@ class _SponsorsState extends State<Sponsors> {
                       ],
                     )),
                 Container(
-                  color: Colors.white,
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                  child: TabBar(
-                    indicator: BoxDecoration(
-                        color: Colors.green[300],
-                        borderRadius: BorderRadius.circular(20.0)),
-                    tabs: [
-                      Tab(
-                          child: Text(
-                        'Title',
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                        textAlign: TextAlign.center,
-                      )),
-                      Tab(
-                          child: Text(
-                        'Platinum',
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                        textAlign: TextAlign.center,
-                      )),
-                      Tab(
-                          child: Text(
-                        'Gold',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                        ),
-                        textAlign: TextAlign.center,
-                      )),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: heightsize - 330,
+                  height: heightsize - 300,
+                  color: Color.fromARGB(255, 237, 248, 243),
                   child: FutureBuilder(
                     future: getFeedbackFromSheet(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -166,9 +134,8 @@ class _SponsorsState extends State<Sponsors> {
                             itemBuilder: (context, index) {
                               return SponsorTile(
                                   snapshot.data[index].name,
-                                  snapshot.data[index].linkedin,
-                                  snapshot.data[index].designation,
-                                  snapshot.data[index].organization);
+                                  snapshot.data[index].imageurl,
+                                  snapshot.data[index].category);
                             });
                       } else {
                         return Container(

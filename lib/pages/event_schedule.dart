@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hst/eventschedulemodel.dart';
 import 'package:http/http.dart' as http;
-import 'package:hst/Sponsors_model.dart';
+import 'package:hst/models/Sponsors_model.dart';
 import 'dart:convert' as convert;
 
 class EventSchedule extends StatefulWidget {

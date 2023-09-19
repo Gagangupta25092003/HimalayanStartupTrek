@@ -1,6 +1,6 @@
 import 'package:hst/notificationmodel.dart';
 import 'package:http/http.dart' as http;
-import 'package:hst/Sponsors_model.dart';
+import 'package:hst/models/Sponsors_model.dart';
 import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -74,7 +74,7 @@ class notificationState extends State<NotificationEvent> {
         ),
       body: Container(
         height: heightsize,
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(10),
         color: Colors.white,
         child: FutureBuilder(
                 future: getFeedbackFromSheet(),
@@ -115,7 +115,7 @@ class notificationTile extends StatelessWidget {
       children: [
         Container(
       padding: EdgeInsets.all(20),
-      width: widthsize-80,
+      width: widthsize-40,
       decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Color.fromRGBO(33, 158, 120, 1),
@@ -138,7 +138,7 @@ class notificationTile extends StatelessWidget {
             time??'',
             style: TextStyle(
               fontSize: 14,
-              color: Colors.black,
+              color: Colors.white
             ),
             textAlign: TextAlign.end,
           )

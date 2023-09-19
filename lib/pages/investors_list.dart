@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hst/pages/sponsorTile.dart';
+import 'package:hst/models/investormentormodel.dart';
+import 'package:hst/tile/sponsorTile.dart';
+import 'package:hst/tile/investorTile.dart';
 import 'package:http/http.dart' as http;
-import 'package:hst/Sponsors_model.dart';
 import 'dart:convert' as convert;
 
 class Investors_detail extends StatefulWidget {
@@ -12,10 +13,10 @@ class Investors_detail extends StatefulWidget {
 
 class _InvestorsdetailState extends State<Investors_detail> {
 
-  Future<List<Sponsor_model>> getFeedbackFromSheet() async {
-    List<Sponsor_model> feedbacks = <Sponsor_model>[];
+  Future<List<Model_Investor_Mentor>> getFeedbackFromSheet() async {
+    List<Model_Investor_Mentor> feedbacks = <Model_Investor_Mentor>[];
     var raw = await http.get(Uri.parse(
-        "https://script.google.com/macros/s/AKfycbwfX_PAHmssObvEz1X_rxP7DjQiQ2rIwA8b9b0bdwcgNeSQlZ-kXGneaBNe0F5L6zge/exec"));
+        "https://script.google.com/macros/s/AKfycbw2ujyURk5dB-Yoc2MEhhfIPhmOGKekMIHhT62QZJpVH22xWbeJ4y-K8hbFqh3xgbox/exec"));
 
     var jsonFeedback = convert.jsonDecode(raw.body);
     print('this is json Feedback $jsonFeedback');
@@ -23,11 +24,13 @@ class _InvestorsdetailState extends State<Investors_detail> {
 
     jsonFeedback.forEach((element) {
       print('$element THIS IS NEXT>>>>>>>');
-      Sponsor_model feedbackModel = new Sponsor_model();
+      Model_Investor_Mentor feedbackModel = new Model_Investor_Mentor();
       feedbackModel.name = element['name'];
       feedbackModel.linkedin = element['linkedin'];
       feedbackModel.designation = element['designation'];
       feedbackModel.organization = element['organization'];
+      feedbackModel.description = element['description'];
+      feedbackModel.imageURL = element['imageurl'];
       feedbacks.add(feedbackModel);
     });
     return feedbacks;
@@ -81,7 +84,12 @@ class _InvestorsdetailState extends State<Investors_detail> {
             Container(
                 width: double.infinity,
                 height: 200,
-                color: Color(0xFF4EEB83),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    Color.fromRGBO(33, 158, 120, 1),
+                    Color.fromRGBO(78, 235, 131, 1)
+                  ]),
+                ),
                 child: Stack(
                   children: [
                     Positioned(
@@ -128,11 +136,14 @@ class _InvestorsdetailState extends State<Investors_detail> {
                     return ListView.builder(
                         itemCount: snapshot.data.length,
                         itemBuilder: (context, index) {
-                          return SponsorTile(
+                          return InvestorTile(
                               snapshot.data[index].name,
                               snapshot.data[index].linkedin,
                               snapshot.data[index].designation,
-                              snapshot.data[index].organization);
+                              snapshot.data[index].organization,
+                              snapshot.data[index].description,
+                              snapshot.data[index].imageURL,
+                          );
                         });
                   } else {
                     return Container(

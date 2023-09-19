@@ -122,30 +122,6 @@ class Body extends StatelessWidget {
                               height: 20,
                             ),
                             Container(
-                              width: widthsize / 2.5,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: TextButton(
-                                onPressed: () {
-                                  GoRouter.of(context).pushNamed('investor');
-                                },
-                                child: Text(
-                                  "Team",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.black)),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
                               width: widthsize,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,

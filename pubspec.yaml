@@ -28,10 +28,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  carousel_slider: ^4.2.1
   flutter:
     sdk: flutter
   go_router: ^5.2.0
   http: ^1.1.0
+
 
 
   # The following adds the Cupertino Icons font to your application.

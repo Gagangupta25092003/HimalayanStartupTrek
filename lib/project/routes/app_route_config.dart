@@ -6,8 +6,9 @@ import 'package:hst/pages/directory.dart';
 import 'package:hst/pages/event_schedule.dart';
 import 'package:hst/pages/home.dart';
 import 'package:hst/pages/error.dart';
-import 'package:hst/pages/investors.dart';
+import 'package:hst/detail/investors.dart';
 import 'package:hst/pages/investors_list.dart';
+import 'package:hst/detail/mentor_detail.dart';
 import 'package:hst/pages/mentors.dart';
 import 'package:hst/pages/notification.dart';
 import 'package:hst/pages/splash.dart';
@@ -15,14 +16,23 @@ import 'package:hst/pages/sponsors.dart';
 import 'package:hst/pages/sponsorsdetail.dart';
 
 import 'package:hst/pages/notification.dart';
+import 'package:hst/pages/startupsPage.dart';
 
 class MyAppRouter{
 
 
 GoRouter router =  GoRouter(
   routes: [
+
     GoRoute(
       path: '/',
+      name: 'Splash',
+      pageBuilder: (context,state) {
+        return MaterialPage(child: Splash());
+      }
+    ),
+    GoRoute(
+      path: '/home',
       name: 'home',
       pageBuilder: (context,state) {
         return MaterialPage(child: Home());
@@ -57,27 +67,12 @@ GoRouter router =  GoRouter(
       }
     ),
     GoRoute(
-      path: '/splash',
-      name: 'splash',
-      pageBuilder: (context,state) {
-        return MaterialPage(child: Splash());
-      }
-    ),
-    GoRoute(
       path: '/error',
       name: 'error',
       pageBuilder: (context,state) {
         return MaterialPage(child: NotificationEvent());
       }
     ),
-    GoRoute(
-      path: '/investor',
-      name: 'investor',
-      pageBuilder: (context,state) {
-        return MaterialPage(child: Investor());
-      }
-    ),
-
     GoRoute(
       path: '/sponsorsdetail',
       name: 'Sponsorsdetail',
@@ -105,10 +100,47 @@ GoRouter router =  GoRouter(
       pageBuilder: (context,state) {
         return MaterialPage(child: Mentors());
       }
-    )
-  ],
-  errorPageBuilder: (context,state) {
-        return MaterialPage(child: Error());
+    ),
+    GoRoute(
+      path: '/startupDetailPage/:name/:founder/:oneliner/:briefidea/:sector',
+      name: 'StartupDetailPage',
+      pageBuilder: (context,state) {
+        return MaterialPage(child: StartupsPage(
+          name: state.params['name'],
+          founder: state.params['founder'],
+          briefidea: state.params['briefidea'],
+          oneliner: state.params['oneliner'],
+          sector: state.params['sector'],
+        ));
       }
+    ),
+    GoRoute(
+      path: '/investorDetailPage/:name/:linkedin/:designation/:organization/:description/:imageurl',
+      name: 'InvestorDetailPage',
+      pageBuilder: (context,state) {
+        return MaterialPage(child: InvestorDetailPage(
+          name: state.params['name'],
+          description: state.params['description'],
+          organization: state.params['organization'],
+          designation: state.params['designation'],
+          imageurl: state.params['imageurl'],
+        ));
+      }
+    ),
+    GoRoute(
+      path: '/MentorDetailPage/:name/:linkedin/:designation/:organization/:description/:imageurl',
+      name: 'MentorDetailPage',
+      pageBuilder: (context,state) {
+        return MaterialPage(child: MentorDetailPage(
+          name: state.params['name'],
+          description: state.params['description'],
+          organization: state.params['organization'],
+          designation: state.params['designation'],
+          imageurl: state.params['imageurl'],
+        ));
+      }
+    ),
+    
+  ],
 );
 }

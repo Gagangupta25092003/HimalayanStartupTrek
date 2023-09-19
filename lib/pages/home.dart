@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -54,80 +55,33 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final widthsize = (MediaQuery.of(context).size.width - 40);
     final heightsize = (MediaQuery.of(context).size.height);
+    final imageurl = [
+      'https://drive.google.com/uc?export=view&id=1jgMYUBe4ttglFbM5JGdtAbIs8dYNx3kP',
+      'https://drive.google.com/uc?export=view&id=1cEloeBmG0f-F28SKHbftzuCFKVikSDNJ',
+      'https://drive.google.com/uc?export=view&id=11QJwHJAYmU3hSs8M3GHpfMKMLF3U10bQ',
+      'https://drive.google.com/uc?export=view&id=10iZ0JqBwUiD0LsUUBXhd1Pj4zp9G4Ln9'
+
+    ];
     return Container(
       color: Colors.white,
       height: heightsize-50,
-      padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
+      padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
       child: ListView(
           children: [
+
+        Container(height: 10),
         Container(
-          width: double.infinity,
-          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-          height: 50,
-          child: const Text(
-            'Hello User !',
-            textAlign: TextAlign.start,
-            style: TextStyle(
-                inherit: false,
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Colors.black),
-          ),
-        ),
-        Container(
-            margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            height: 225,
-            decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
-                ),
-                borderRadius: BorderRadius.circular(30)),
-            child:  Stack(
-                children: [
-                  Positioned(
-                    width: widthsize,
-                    bottom: 0,
-                      child: Image.asset(
-                    'assets/images/home_Vector.png',
-                    fit: BoxFit.cover,
-                  )),
-                  Positioned(
-                    width: widthsize,
-                    bottom: 0,
-                      child: Image.asset(
-                    'assets/images/home_Vector2.png',
-                    fit: BoxFit.cover,
-                  )),
-                  Positioned(
-                    width: widthsize/1.25,
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(30, 40, 30, 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Latest Anouncement',
-                              style: TextStyle(
-                                    inherit: false,
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.bold
-                                  ),
-                            ),
-                            Container(height: 10,),
-                            const Text(
-                              'Venue of the event has been changed.',
-                              style: TextStyle(
-                                    inherit: false,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w300
-                                  ),
-                            )
-                          ],
-                        ),
-                        )
-                  )
-                ],
-              ),
+            child: CarouselSlider.builder(itemCount: 4, itemBuilder: (context, index, realIndex) {
+              final imageUrl = imageurl[index];
+                return BuildImage(imageUrl, index);
+            }, options: CarouselOptions(
+              enlargeCenterPage: true,
+              autoPlay: true,
+              aspectRatio: 1,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: true,
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              viewportFraction: 0.8,)),
             ),
         Container(
           width: double.infinity,
@@ -142,7 +96,7 @@ class Body extends StatelessWidget {
                         flex: 1,
                         child: GestureDetector(
                           child: Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 7.5, 0),
+                          margin: EdgeInsets.fromLTRB(10, 0, 20, 0),
                           decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
@@ -151,7 +105,7 @@ class Body extends StatelessWidget {
                           child: Column(children: [
                             Container(
                               padding: EdgeInsets.all(10),
-                              height: 75,
+                              height: 50,
                               child:
                                   Image.asset('assets/images/directories.png'),
                             ),
@@ -174,7 +128,7 @@ class Body extends StatelessWidget {
                         flex: 1,
                         child: GestureDetector(
                           child: Container(
-                          margin: EdgeInsets.fromLTRB(7.5, 0, 0, 0),
+                          margin: EdgeInsets.fromLTRB(20, 0, 10, 0),
                           decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
@@ -183,7 +137,7 @@ class Body extends StatelessWidget {
                           child: Column(children: [
                             Container(
                               padding: EdgeInsets.all(10),
-                              height: 75,
+                              height: 50,
                               child:
                                   Image.asset('assets/images/calendar_month.png'),
                             ),
@@ -206,77 +160,6 @@ class Body extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Row(
-                  children: [
-                    Expanded(
-                        flex: 1,
-                        child: GestureDetector(
-                          child: Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 7.5, 0),
-                          decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
-                              ),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(children: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              height: 75,
-                              child:
-                                  Image.asset('assets/images/map.png'),
-                            ),
-                            Container(
-                                margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                                child: const Text(
-                                  'Event Map',
-                                  style: TextStyle(
-                                    inherit: false,
-                                    fontSize: 16,
-                                  ),
-                                ))
-                          ]),
-                        ),
-                        onTap: () {
-                          GoRouter.of(context).pushNamed('Event Map');
-                        },
-                        )),
-                    Expanded(
-                        flex: 1,
-                        child: GestureDetector(
-                          child: Container(
-                          margin: EdgeInsets.fromLTRB(7.5, 0, 0, 0),
-                          decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
-                              ),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(children: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              height: 75,
-                              child:
-                                  Image.asset('assets/images/events.png'),
-                            ),
-                            Container(
-                                margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                                child: const Text(
-                                  'My Events',
-                                  style: TextStyle(
-                                    inherit: false,
-                                    fontSize: 16,
-                                  ),
-                                ))
-                          ]),
-                        ),
-                        onTap: () {
-                          GoRouter.of(context).pushNamed('My Events');
-                        },
-                        )),
-                  ],
-                ),
-              ),
-              Container(
                 margin: EdgeInsets.fromLTRB(0, 10, 0, 00),
                 child: Row(
                   children: [
@@ -284,7 +167,7 @@ class Body extends StatelessWidget {
                         flex: 1,
                         child: GestureDetector(
                           child: Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 7.5, 0),
+                          margin: EdgeInsets.fromLTRB(10, 0, 20, 0),
                           decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
@@ -293,7 +176,7 @@ class Body extends StatelessWidget {
                           child: Column(children: [
                             Container(
                               padding: EdgeInsets.all(10),
-                              height: 75,
+                              height: 50,
                               child:
                                   Image.asset('assets/images/sponsors.png'),
                             ),
@@ -316,7 +199,7 @@ class Body extends StatelessWidget {
                         flex: 1,
                         child: GestureDetector(
                           child: Container(
-                          margin: EdgeInsets.fromLTRB(7.5, 0, 0, 0),
+                          margin: EdgeInsets.fromLTRB(20, 0, 10, 0),
                           decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
@@ -325,7 +208,7 @@ class Body extends StatelessWidget {
                           child: Column(children: [
                             Container(
                               padding: EdgeInsets.all(10),
-                              height: 75,
+                              height: 50,
                               child:
                                   Image.asset('assets/images/about.png'),
                             ),
@@ -355,7 +238,7 @@ class Body extends StatelessWidget {
                         flex: 1,
                         child: GestureDetector(
                           child: Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 7.5, 0),
+                          margin: EdgeInsets.fromLTRB(10, 0, 20, 0),
                           decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
@@ -364,9 +247,9 @@ class Body extends StatelessWidget {
                           child: Column(children: [
                             Container(
                               padding: EdgeInsets.all(10),
-                              height: 75,
+                              height: 50,
                               child:
-                                  Image.asset('assets/images/sponsors.png'),
+                                  Image.asset('assets/images/investor.png'),
                             ),
                             Container(
                                 margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
@@ -387,7 +270,7 @@ class Body extends StatelessWidget {
                         flex: 1,
                         child: GestureDetector(
                           child: Container(
-                          margin: EdgeInsets.fromLTRB(7.5, 0, 0, 0),
+                          margin: EdgeInsets.fromLTRB(20, 0, 10, 0),
                           decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
@@ -396,9 +279,9 @@ class Body extends StatelessWidget {
                           child: Column(children: [
                             Container(
                               padding: EdgeInsets.all(10),
-                              height: 75,
+                              height: 50,
                               child:
-                                  Image.asset('assets/images/about.png'),
+                                  Image.asset('assets/images/mentor.png'),
                             ),
                             Container(
                                 margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
@@ -417,11 +300,87 @@ class Body extends StatelessWidget {
                         )),
                   ],
                 ),
-              )
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Row(
+                  children: [
+                    Expanded(
+                        flex: 1,
+                        child: GestureDetector(
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(10, 0, 20, 0),
+                            decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  colors: [Color(0xFF219E78), Color(0xFF4EEB83)],
+                                ),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Column(children: [
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                height: 50,
+                                child:
+                                Image.asset('assets/images/map.png'),
+                              ),
+                              Container(
+                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                                  child: const Text(
+                                    'Event Map',
+                                    style: TextStyle(
+                                      inherit: false,
+                                      fontSize: 16,
+                                    ),
+                                  ))
+                            ]),
+                          ),
+                          onTap: () {
+                            GoRouter.of(context).pushNamed('Event Map');
+                          },
+                        )),
+                    Expanded(
+                        flex: 1,
+                        child: Container()),
+                  ],
+                ),
+              ),
             ],
           ),
-        )
+        ),
+            Container(
+                width: double.infinity,
+                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Column(
+                  children: [
+                    Container(height: 50),
+                    Container(
+                      height: 75,
+                      child: Image.asset('assets/images/HST_Logo.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Container(height: 50),
+                    Container(
+                      height: 75,
+                      child: Image.asset('assets/images/CatalystLogo.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ],
+                )
+            ),
       ]),
     );
   }
 }
+
+Widget BuildImage(String url, int index) => Container(
+  margin: EdgeInsets.symmetric(horizontal: 5),
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(20),
+    color: Colors.black
+  ),
+  child: Image.network(
+    url,
+    fit: BoxFit.cover,
+  ),
+);

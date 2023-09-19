@@ -1,10 +1,31 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class Splash extends StatelessWidget {
-  const Splash({super.key});
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+
+class Splash extends StatefulWidget {
+  @override
+  SplashState createState() => SplashState();
+}
+
+class SplashState extends State<Splash> {
+
+  @override
+  void initState(){
+    super.initState();
+    Timer(
+      Duration(milliseconds: 1500), () { 
+        GoRouter.of(context).pushNamed('home');
+      });
+  }   
+
+    
+  
   
   @override
   Widget build(BuildContext context) {
+
     return Container(
       color: Colors.white,
       padding: EdgeInsets.all(20),
@@ -54,8 +75,8 @@ class Splash extends StatelessWidget {
 
 
       ],
-
       ),
+      
 
     );
   }
