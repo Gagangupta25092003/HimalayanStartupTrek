@@ -6,7 +6,11 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final widthsize = (MediaQuery.of(context).size.width );
     return Scaffold(
+
+
       bottomNavigationBar: BottomAppBar(
         height: 40,
         child: Row(
@@ -51,182 +55,65 @@ class Body extends StatelessWidget {
   const Body({super.key});
   @override
   Widget build(BuildContext context) {
-    final widthsize = (MediaQuery.of(context).size.width);
+    final widthsize = (MediaQuery.of(context).size.width-40);
     final heightsize = (MediaQuery.of(context).size.height);
     return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(flex: 2, child: Container()),
-          Expanded(
-              flex: 4,
+      color: Colors.green,
+      padding: EdgeInsets.fromLTRB(20, 40, 20, 40),
+      child: Center(
+        child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+            ),
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+                padding: EdgeInsets.symmetric(horizontal: 80, vertical: 20),
+                child: Image.asset(
+                  'assets/images/HST_Logo.png',
+                  fit: BoxFit.contain,
+                )),
+            Container(
+              padding: EdgeInsets.fromLTRB(20,0,20,20),
               child: Container(
-                  height: (heightsize - 40) / 5,
-                  child: Image.asset(
-                    'assets/images/HST_Logo.png',
-                    fit: BoxFit.cover,
-                  ))),
-          Expanded(flex: 1, child: Container()),
-          Expanded(
-              flex: 12,
-              child: Container(
-                height: double.infinity,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Color(0xFF219E78), Color(0xFF4EEB83)])),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      bottom: 0,
-                      child: Container(
-                          width: widthsize,
-                          child: Image.asset('assets/images/aboutVector.png',
-                              fit: BoxFit.cover)),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      width: widthsize,
-                      child: Container(
-                          child: Image.asset('assets/images/aboutVector2.png',
-                              fit: BoxFit.cover)),
-                    ),
-                    Positioned(
-                        height: heightsize * 0.7,
-                        child:  Column(
+                  child:  Column(
+                    children: [
+                      Text(
+                        "HIMALAYAN STARTUP TREK",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 22, fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
+                      ),
+                      SizedBox(
+                        height: heightsize * 0.04,
+                      ),
+                      Container(
+                        width: widthsize,
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(height: 20),
                             Text(
-                              "HIMALAYAN STARTUP TREK",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.bold),
+                              "Himalayan Startup Trek is the flagship annual startup event hosted by IIT Mandi Catalyst (Catalyst) to bring together the stakeholders of the Indian Startup Ecosystem and connect them on a single platform. New venturing startups and seasoned mentors get to meet each other and pick each others' brains that help formulate new relationships and turn the ideas and innovations into products and services for the global market.",
+                              style: TextStyle(fontSize: 16),
                             ),
-                            SizedBox(
-                              height: heightsize * 0.04,
-                            ),
-                            SizedBox(
-                              width: widthsize,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Biggest Startup Event of Himalayas",
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                  Text("Flagship event of the year.",
-                                      style: TextStyle(fontSize: 16))
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              width: widthsize,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  SizedBox(
-                                    width: widthsize / 5,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        CircleAvatar(
-                                          backgroundImage: AssetImage(
-                                              "assets/images/aboutavatar.png"),
-                                          radius: widthsize / 7,
-                                        ),
-                                        Text("Dr pramod")
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: widthsize / 5,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        CircleAvatar(
-                                          backgroundImage: AssetImage(
-                                              "assets/images/aboutavatar.png"),
-                                          radius: widthsize / 7,
-                                        ),
-                                        Text("Rahul")
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: widthsize / 5,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        CircleAvatar(
-                                          backgroundImage: AssetImage(
-                                              "assets/images/aboutavatar.png"),
-                                          radius: widthsize / 7,
-                                        ),
-                                        Text("Dr Mohan")
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                                width: widthsize,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    SizedBox(
-                                      width: widthsize / 5,
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                "assets/images/aboutavatar.png"),
-                                            radius: widthsize / 7,
-                                          ),
-                                          Text("Dr pramod")
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: widthsize / 5,
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                "assets/images/aboutavatar.png"),
-                                            radius: widthsize / 7,
-                                          ),
-                                          Text("Rahul")
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: widthsize / 5,
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                "assets/images/aboutavatar.png"),
-                                            radius: widthsize / 7,
-                                          ),
-                                          Text("Dr Mohan")
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                            )
+
                           ],
-                        ))
-                  ],
-                ),
-              ))
-        ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      )
+                    ],
+                  ))
+              ),
+
+          ],
+        )),
       ),
     );
   }

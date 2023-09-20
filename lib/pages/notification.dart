@@ -37,6 +37,37 @@ class notificationState extends State<NotificationEvent> {
     final widthsize = (MediaQuery.of(context).size.width - 40);
     final heightsize = (MediaQuery.of(context).size.height - 40);
     return Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Container(
+            width: widthsize+40,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(height: 50, child: Image.asset('assets/images/HST_Logo.png', fit: BoxFit.contain,),),
+                Container(width: 10),
+                Text('Himalayan Startup Trek',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold
+                  ),
+                )
+                ,            ],
+            ),
+          ),
+          titleSpacing: 00.0,
+          centerTitle: true,
+          toolbarHeight: 60,
+          toolbarOpacity: 0.8,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(25),
+                bottomLeft: Radius.circular(25)),
+          ),
+          elevation: 0.00,
+          backgroundColor: Colors.white,
+        ),
       bottomNavigationBar: BottomAppBar(
         height: 40,
           child: Row(
@@ -74,7 +105,7 @@ class notificationState extends State<NotificationEvent> {
         ),
       body: Container(
         height: heightsize,
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.fromLTRB(10,0,10,10),
         color: Colors.white,
         child: FutureBuilder(
                 future: getFeedbackFromSheet(),

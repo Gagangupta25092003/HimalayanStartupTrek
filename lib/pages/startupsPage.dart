@@ -25,6 +25,37 @@ class StartupsPage extends StatelessWidget {
     final heightsize = (MediaQuery.of(context).size.height);
 
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Container(
+          width: widthsize,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(height: 50, child: Image.asset('assets/images/HST_Logo.png', fit: BoxFit.contain,),),
+              Container(width: 10),
+              Text('Himalayan Startup Trek',
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold
+                ),
+              )
+              ,            ],
+          ),
+        ),
+        titleSpacing: 00.0,
+        centerTitle: true,
+        toolbarHeight: 60,
+        toolbarOpacity: 0.8,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(25),
+              bottomLeft: Radius.circular(25)),
+        ),
+        elevation: 0.00,
+        backgroundColor: Colors.white,
+      ),
       bottomNavigationBar: BottomAppBar(
         height: 40,
         child: Row(
@@ -61,16 +92,20 @@ class StartupsPage extends StatelessWidget {
         ),
       ),
       body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Color(0xFF219E78), Color(0xFF4EEB83)])
+          ),
           child: Column(
         children: [
-          Expanded(flex: 2, child: Container()),
+          Expanded(flex: 1, child: Container()),
           Expanded(
-              flex: 4,
+              flex: 2,
               child: Container(
-                  height: (heightsize - 40) / 5,
+
                   child: Image.asset(
-                    'assets/images/HST_Logo.png',
-                    fit: BoxFit.cover,
+                    'assets/images/investor.png',
+                    fit: BoxFit.contain,
                   ))),
           Expanded(flex: 1, child: Container()),
           Expanded(
@@ -78,14 +113,13 @@ class StartupsPage extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
+                          color: Colors.black.withOpacity(0.1),
                           blurRadius: 15,
                           spreadRadius: 2),
-                    ],
-                    gradient: LinearGradient(
-                        colors: [Color(0xFF219E78), Color(0xFF4EEB83)])),
+                    ],),
                 child: Stack(
                   children: [
                     Positioned(

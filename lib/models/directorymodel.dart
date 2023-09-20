@@ -15,13 +15,13 @@ class Directorymodel {
 
   factory Directorymodel.fromJson(dynamic json){
     return Directorymodel(
-     name: '${json["name"]}',
-     founder: '${json["founder"]}',
-     onelinebrief: '${json["onelinebrief"]}',
-     onephrase: '${json["onephrase"]}',
-     sector: '${json["sector"]}',
-     tag: '${json["tag"]}',
-     breifidea: '${json["briefidea"]}',
+      name: '${json["name"]}',
+      founder: '${json["founder"]}',
+      onelinebrief: '${json["onelinebrief"]}',
+      onephrase: '${json["onephrase"]}',
+      sector: '${json["sector"]}',
+      tag: '${json["tag"]}',
+      breifidea: '${json["briefidea"]}',
     );
   }
 

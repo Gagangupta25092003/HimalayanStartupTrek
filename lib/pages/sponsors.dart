@@ -122,6 +122,7 @@ class _SponsorsState extends State<Sponsors> {
                             ))
                       ],
                     )),
+                Container(height: 20),
                 Container(
                   height: heightsize - 300,
                   color: Color.fromARGB(255, 237, 248, 243),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hst/directorymodel.dart';
+import 'package:hst/models/directorymodel.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
@@ -16,18 +16,16 @@ class _DirectoryState extends State<Directory> {
         "https://script.google.com/macros/s/AKfycbwvxszYaGTyW14-iqcBsPgGtx9_zicbz-zUbqW2Y7Ni-ZB8Pjsy732yQGWhm00a2NdS/exec"));
 
     var jsonFeedback = convert.jsonDecode(raw.body);
-    print('this is json Feedback $jsonFeedback');
     // feedbacks = jsonFeedback.map((json) => FeedbackModel.fromJson(json));
 
     jsonFeedback.forEach((element) {
-      print('$element THIS IS NEXT>>>>>>>');
       Directorymodel feedbackModel = new Directorymodel();
       feedbackModel.name = element['name'];
       feedbackModel.founder = element['founder'];
       feedbackModel.onelinebrief = element['onelinebrief'];
       feedbackModel.onephrase = element['onephrase'];
       feedbackModel.sector = element['sector'];
-      feedbackModel.tag = element['tag'];
+      feedbackModel.tag = element['add'];
       feedbackModel.breifidea = element['briefidea'];
       feedbacks.add(feedbackModel);
     });
@@ -75,7 +73,7 @@ class _DirectoryState extends State<Directory> {
           ),
         ),
         body: DefaultTabController(
-          length: 3,
+          length: 5,
           child: Container(
             color: Color.fromARGB(255, 237, 248, 243),
             child: Column(
@@ -144,22 +142,40 @@ class _DirectoryState extends State<Directory> {
                     tabs: [
                       Tab(
                           child: Text(
-                        'HCI',
-                        style: TextStyle(color: Colors.black, fontSize: 13),
+                        'H.C.I.',
+                        style: TextStyle(color: Colors.black, fontSize: 12),
                         textAlign: TextAlign.center,
                       )),
                       Tab(
                           child: Text(
-                        'BUILD for Himalayas',
-                        style: TextStyle(color: Colors.black, fontSize: 13),
+                        'B.F.H.',
+                        style: TextStyle(color: Colors.black, fontSize: 12),
                         textAlign: TextAlign.center,
                       )),
                       Tab(
                           child: Text(
-                        'Environment and Sustanibility',
+                        'E. & S.',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 13,
+                          fontSize: 12,
+                        ),
+                        textAlign: TextAlign.center,
+                      )),
+                      Tab(
+                          child: Text(
+                        'I. D.',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                        ),
+                        textAlign: TextAlign.center,
+                      )),
+                      Tab(
+                          child: Text(
+                        'G. C.',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
                         ),
                         textAlign: TextAlign.center,
                       )),
@@ -170,98 +186,273 @@ class _DirectoryState extends State<Directory> {
                     child: TabBarView(
                   children: [
                     Container(
-                      padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
+
                       height: heightsize - widthsize / 2.15 - 100 - 20,
-                      child: FutureBuilder(
-                        future: getFeedbackFromSheet(),
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
-                          if (snapshot.data != null) {
-                            return ListView.builder(
-                                itemCount: snapshot.data.length,
-                                itemBuilder: (context, index) {
-                                  return DirectoryTile(
-                                    snapshot.data[index].name,
-                                    snapshot.data[index].founder,
-                                    snapshot.data[index].onephrase,
-                                    snapshot.data[index].onelinebrief,
-                                    snapshot.data[index].breifidea,
-                                    snapshot.data[index].sector,
-                                    snapshot.data[index].tag,
+                      child: Column(
+                        children: [
+                          Container(
+
+                            child: Text(
+                              'Human Computer Interaction',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            color: Colors.white,
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            width: widthsize+40,
+                          ),
+                          Container(
+                            height: heightsize - widthsize / 2.15 - 100 - 20,
+                            padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
+                            child: FutureBuilder(
+                              future: getFeedbackFromSheet(),
+                              builder:
+                                  (BuildContext context, AsyncSnapshot snapshot) {
+                                if (snapshot.data != null) {
+                                  return ListView.builder(
+                                      itemCount: snapshot.data.length,
+                                      itemBuilder: (context, index) {
+                                        if (snapshot.data[index].tag == 'a') {
+                                          return DirectoryTile(
+                                            snapshot.data[index].name,
+                                            snapshot.data[index].founder,
+                                            snapshot.data[index].onephrase,
+                                            snapshot.data[index].onelinebrief,
+                                            snapshot.data[index].breifidea,
+                                            snapshot.data[index].sector,
+                                            snapshot.data[index].tag,
+                                          );
+                                        } else {
+                                          return Container();
+                                        }
+                                      });
+                                } else {
+                                  return Container(
+                                    child: Center(
+                                      child: Text('Loading.....'),
+                                    ),
                                   );
-                                });
-                          } else {
-                            return Container(
-                              child: Center(
-                                child: Text('Loading.....'),
-                              ),
-                            );
-                          }
-                        },
+                                }
+                              },
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
                       height: heightsize - widthsize / 2.15 - 100 - 20,
-                      child: FutureBuilder(
-                        future: getFeedbackFromSheet(),
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
-                          if (snapshot.data != null) {
-                            return ListView.builder(
-                                itemCount: snapshot.data.length,
-                                itemBuilder: (context, index) {
-                                  return DirectoryTile(
-                                    snapshot.data[index].name,
-                                    snapshot.data[index].founder,
-                                    snapshot.data[index].onephrase,
-                                    snapshot.data[index].onelinebrief,
-                                    snapshot.data[index].breifidea,
-                                    snapshot.data[index].sector,
-                                    snapshot.data[index].tag,
+                      child: Column(
+                        children: [
+                          Container(
+                            child: Text(
+                              'Build For Himalayas',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            color: Colors.white,
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            width: widthsize+40,
+                          ),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
+                            height: heightsize - widthsize / 2.15 - 100 - 20,
+                            child: FutureBuilder(
+                              future: getFeedbackFromSheet(),
+                              builder:
+                                  (BuildContext context, AsyncSnapshot snapshot) {
+                                if (snapshot.data != null) {
+                                  return ListView.builder(
+                                      itemCount: snapshot.data.length,
+                                      itemBuilder: (context, index) {
+                                        if (snapshot.data[index].tag == 'b') {
+                                          return DirectoryTile(
+                                            snapshot.data[index].name,
+                                            snapshot.data[index].founder,
+                                            snapshot.data[index].onephrase,
+                                            snapshot.data[index].onelinebrief,
+                                            snapshot.data[index].breifidea,
+                                            snapshot.data[index].sector,
+                                            snapshot.data[index].tag,
+                                          );
+                                        } else {
+                                          return Container();
+                                        }
+                                      });
+                                } else {
+                                  return Container(
+                                    child: Center(
+                                      child: Text('Loading.....'),
+                                    ),
                                   );
-                                });
-                          } else {
-                            return Container(
-                              child: Center(
-                                child: Text('Loading.....'),
-                              ),
-                            );
-                          }
-                        },
+                                }
+                              },
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.fromLTRB(30, 10, 30, 30),
-                      height: heightsize - widthsize / 2.15 - 100 - 20,
-                      child: FutureBuilder(
-                        future: getFeedbackFromSheet(),
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
-                          if (snapshot.data != null) {
-                            return ListView.builder(
-                                itemCount: snapshot.data.length,
-                                itemBuilder: (context, index) {
-                                  return DirectoryTile(
-                                    snapshot.data[index].name,
-                                    snapshot.data[index].founder,
-                                    snapshot.data[index].onephrase,
-                                    snapshot.data[index].onelinebrief,
-                                    snapshot.data[index].breifidea,
-                                    snapshot.data[index].sector,
-                                    snapshot.data[index].tag,
+                        height: heightsize - widthsize / 2.15 - 100 - 20,
+                        child: Column(children: [
+                          Container(
+                            child: Text(
+                              'Environment & Sustainibility',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            color: Colors.white,
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            width: widthsize+40,
+                          ),
+                          Container(
+                            height: heightsize - widthsize / 2.15 - 100 - 20,
+                            padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
+                            child: FutureBuilder(
+                              future: getFeedbackFromSheet(),
+                              builder:
+                                  (BuildContext context, AsyncSnapshot snapshot) {
+                                if (snapshot.data != null) {
+                                  return ListView.builder(
+                                      itemCount: snapshot.data.length,
+                                      itemBuilder: (context, index) {
+                                        if (snapshot.data[index].tag == 'c') {
+                                          return DirectoryTile(
+                                            snapshot.data[index].name,
+                                            snapshot.data[index].founder,
+                                            snapshot.data[index].onephrase,
+                                            snapshot.data[index].onelinebrief,
+                                            snapshot.data[index].breifidea,
+                                            snapshot.data[index].sector,
+                                            snapshot.data[index].tag,
+                                          );
+                                        } else {
+                                          return Container();
+                                        }
+                                      });
+                                } else {
+                                  return Container(
+                                    child: Center(
+                                      child: Text('Loading.....'),
+                                    ),
                                   );
-                                });
-                          } else {
-                            return Container(
-                              child: Center(
-                                child: Text('Loading.....'),
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                    ),
+                                }
+                              },
+                            ),
+                          ),
+                        ])),
+                    Container(
+                        height: heightsize - widthsize / 2.15 - 100 - 20,
+                        child: Column(children: [
+                          Container(
+                            child: Text(
+                              'Investor Den',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            color: Colors.white,
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            width: widthsize+40,
+                          ),
+                          Container(
+                            height: heightsize - widthsize / 2.15 - 100 - 20,
+                            padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
+                            child: FutureBuilder(
+                              future: getFeedbackFromSheet(),
+                              builder:
+                                  (BuildContext context, AsyncSnapshot snapshot) {
+                                if (snapshot.data != null) {
+                                  return ListView.builder(
+                                      itemCount: snapshot.data.length,
+                                      itemBuilder: (context, index) {
+                                        if (snapshot.data[index].tag == 'd') {
+                                          return DirectoryTile(
+                                            snapshot.data[index].name,
+                                            snapshot.data[index].founder,
+                                            snapshot.data[index].onephrase,
+                                            snapshot.data[index].onelinebrief,
+                                            snapshot.data[index].breifidea,
+                                            snapshot.data[index].sector,
+                                            snapshot.data[index].tag,
+                                          );
+                                        } else {
+                                          return Container();
+                                        }
+                                      });
+                                } else {
+                                  return Container(
+                                    child: Center(
+                                      child: Text('Loading.....'),
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                          ),
+                        ])),
+                    Container(
+                        height: heightsize - widthsize / 2.15 - 100 - 20,
+                        child: Column(children: [
+                          Container(
+                            child: Text(
+                              'Grand Challenge',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            color: Colors.white,
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            width: widthsize+40,
+                          ),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
+                            height: heightsize - widthsize / 2.15 - 100 - 20,
+                            child: FutureBuilder(
+                              future: getFeedbackFromSheet(),
+                              builder:
+                                  (BuildContext context, AsyncSnapshot snapshot) {
+                                if (snapshot.data != null) {
+                                  return ListView.builder(
+                                      itemCount: snapshot.data.length,
+                                      itemBuilder: (context, index) {
+                                        if (snapshot.data[index].tag == 'e') {
+                                          return DirectoryTile(
+                                            snapshot.data[index].name,
+                                            snapshot.data[index].founder,
+                                            snapshot.data[index].onephrase,
+                                            snapshot.data[index].onelinebrief,
+                                            snapshot.data[index].breifidea,
+                                            snapshot.data[index].sector,
+                                            snapshot.data[index].tag,
+                                          );
+                                        } else {
+                                          return Container();
+                                        }
+                                      });
+                                } else {
+                                  return Container(
+                                    child: Center(
+                                      child: Text('Loading.....'),
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                          ),
+                        ])),
                   ],
                 ))
               ],
@@ -316,7 +507,7 @@ class DirectoryTile extends StatelessWidget {
                         style: TextStyle(
                             inherit: false,
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
                       Container(
@@ -328,7 +519,7 @@ class DirectoryTile extends StatelessWidget {
                         style: TextStyle(
                             inherit: false,
                             color: Colors.black,
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.w500),
                       ),
                       Text(
@@ -337,7 +528,7 @@ class DirectoryTile extends StatelessWidget {
                         style: TextStyle(
                             inherit: false,
                             color: Colors.black,
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w300,
                             fontStyle: FontStyle.italic),
                       ),
@@ -347,7 +538,7 @@ class DirectoryTile extends StatelessWidget {
                         style: TextStyle(
                             inherit: false,
                             color: Colors.black,
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w300),
                       ),
                     ]),
@@ -360,7 +551,13 @@ class DirectoryTile extends StatelessWidget {
         ],
       ),
       onTap: () {
-        GoRouter.of(context).pushNamed('StartupDetailPage', params: {'name': name??'', 'founder': founder??'', 'oneliner': onephrase??'', 'briefidea' : breifidea??'', 'sector': sector??''});
+        GoRouter.of(context).pushNamed('StartupDetailPage', params: {
+          'name': name ?? '',
+          'founder': founder ?? '',
+          'oneliner': onephrase ?? '',
+          'briefidea': breifidea ?? '',
+          'sector': sector ?? ''
+        });
       },
     );
   }
